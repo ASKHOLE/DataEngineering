@@ -1,0 +1,4 @@
+docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker rmi $(docker images -q)
+
+docker load < XXX.tar
+docker run -itd -u root --name=XXX -p 0.0.0.0:51112:8080 -v /tmp:/tmp --restart=always -e XX=xx 11431we134e2
