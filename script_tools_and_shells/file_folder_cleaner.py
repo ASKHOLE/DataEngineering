@@ -2,6 +2,11 @@
 该脚本是基于待删除的批次列表txt，进行相关路径下的大量文件的删除，主要包含以下处理：
 1）删除前，统计批次路径下各个part对应的文件数
 2）通过"rsync"命令删除整个文件夹，比"rm -rf"命令要快很多
+
+执行该脚本命令：nohup python -u file_folder_cleaner.py >> del_20240701.log 2>&1 &
+执行结果后，统计linux命令：
+    1)总的统计：grep "##file_number:" del_20240701.log | awk '{sum+=$2}END{print sum}'
+    2）分组统计：awk '{sum[$1]+=$2} END {for (i in sum) print i":"sum[i]}' del_20240701.log
 """
 
 import os
